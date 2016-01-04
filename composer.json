@@ -1,0 +1,24 @@
+{
+  "name": "colorium/application",
+  "type": "library",
+  "description": "Basic app structure using Colorium framework",
+  "homepage": "https://github.com/colorium/application",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aymeric Assier",
+      "email": "aymeric.assier@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "colorium/orm": "~0.1",
+    "colorium/framework": "~0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App": "/app/"
+    }
+  }
+}
