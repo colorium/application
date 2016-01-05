@@ -13,12 +13,12 @@
   ],
   "require": {
     "php": ">=5.6",
-    "colorium/orm": ">=0.1",
-    "colorium/framework": ">=0.1"
+    "colorium/orm": "dev-master",
+    "colorium/framework": "dev-master"
   },
   "autoload": {
     "psr-4": {
-      "App\\": "/app/"
+      "App\\": "app/"
     }
   }
 }
