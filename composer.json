@@ -1,6 +1,6 @@
 {
   "name": "colorium/application",
-  "type": "library",
+  "type": "project",
   "description": "Basic application setup",
   "homepage": "https://github.com/colorium/application",
   "license": "MIT",
