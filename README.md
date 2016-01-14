@@ -1,1 +1,1 @@
-# Colorium Web Framework
+# Colorium Project Setup

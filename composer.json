@@ -1,8 +1,8 @@
 {
-  "name": "colorium/application",
+  "name": "colorium/project",
   "type": "project",
-  "description": "Basic application setup",
-  "homepage": "https://github.com/colorium/application",
+  "description": "Basic colorium project setup",
+  "homepage": "https://github.com/colorium/project",
   "license": "MIT",
   "authors": [
     {
@@ -13,7 +13,7 @@
   ],
   "require": {
     "php": ">=5.6",
-    "colorium/orm": "dev-master",
+    "filp/whoops": "1.*",
     "colorium/framework": "dev-master"
   },
   "autoload": {

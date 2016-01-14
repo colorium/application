@@ -4,28 +4,57 @@
  * Orm setup
  */
 
-use Colorium\Orm;
+use App\Model\User;
 
-$sqlite = new Orm\SQlite(__DIR__ . '/files/app.db');
-$sqlite->map('user', App\Model\User::class);
-
+$sqlite = Colorium\Orm\Mapper::SQLite(__DIR__ . '/files/pictobox.db');
+$sqlite->map('user', User::class);
 $sqlite->builder('user')->create();
-
-Orm\Mapper::source($sqlite);
 
 
 /**
  * App setup
  */
 
-use Colorium\Kernel;
+$app = new Colorium\App\Front;
 
-$app = new Kernel\App;
+// template definition
+$app->templater->root = __DIR__ . '/files/views/';
 
 // routes definition
-$app->router->add('get /', 'App\Logic\Home::page');
+$app->on('GET /login',         'App\Logic\Users::login');
+$app->on('POST /authenticate', 'App\Logic\Users::authenticate');
+$app->on('GET /logout',        'App\Logic\Users::logout');
+
+$app->on('GET /',                          'App\Logic\Albums::all');
+$app->on('GET /:y',                        'App\Logic\Albums::year');
+$app->on('GET /:y/:m',                     'App\Logic\Albums::month');
+$app->on('GET /:y/:m/:d',                  'App\Logic\Albums::day');
+$app->on('GET /:y/:m/:d/:album',           'App\Logic\Albums::one');
+$app->on('POST /:y/:m/:d/:album/create',   'App\Logic\Albums::create');
+$app->on('POST /:y/:m/:d/:album/upload',   'App\Logic\Albums::upload');
 
 // events definition
-$app->events->on(404, 'App\Logic\Home::notfound');
+$app->when(401, 'App\Logic\Errors::unauthorized');
+$app->when(404, 'App\Logic\Errors::notfound');
+$app->when(\Exception::class, 'App\Logic\Errors::error');
+
+
+/**
+ * Debug setup
+ */
+
+$app->prod = false;
+if(!$app->prod) {
+    $handler = new Whoops\Handler\PrettyPageHandler;
+    $handler->addDataTableCallback('App Request', function() use ($app) {
+        return (array)$app->context->request;
+    });
+    (new Whoops\Run)->pushHandler($handler)->register();
+}
+
+
+/**
+ * Finally, run app
+ */
 
 $app->run();
