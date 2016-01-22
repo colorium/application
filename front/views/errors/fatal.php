@@ -1,3 +1,3 @@
 <?php self::layout('front'); ?>
 
-I'm lost...
+<h1>500 Fatal Error</h1>

@@ -1,3 +1,3 @@
 <?php self::layout('front'); ?>
 
-Hello :D
+<h1>401 Unauthorized</h1>

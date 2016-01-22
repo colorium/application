@@ -1,4 +1,4 @@
 <?php
 
 require '../vendor/autoload.php';
-require '../app.php';
+require '../front/app.php';

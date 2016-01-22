@@ -15,12 +15,4 @@ class Home
         // do some nice stuff :)
     }
 
-
-    /**
-     * Render not found page
-     *
-     * @html home/notfound
-     */
-    public function notfound() {}
-
 }
